@@ -1,0 +1,192 @@
+:root {
+  --rosa: #e83e8c;
+  --rosa-claro: #ffe3ef;
+  --ciruela: #5b1a4a;
+  --dorado: #d4a85a;
+  --crema: #fff7fa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--crema);
+  color: var(--ciruela);
+  padding-bottom: 40px;
+}
+
+/* ===== ENCABEZADO ===== */
+h1, .slogan, .autor {
+  margin: 0;
+  text-align: center;
+  background: linear-gradient(135deg, var(--ciruela), var(--rosa));
+}
+h1 { padding: 30px 16px 4px; font-size: 2.4rem; color: #fff; letter-spacing: 1px; }
+.slogan { padding: 0 16px 6px; font-style: italic; font-size: 1.1rem; color: var(--dorado); }
+.autor { padding: 0 16px 28px; font-size: 0.85rem; color: #ffd6e8; margin-bottom: 32px; }
+
+/* ===== PRODUCTOS ===== */
+#productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+#productos > div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 12px 12px 18px;
+  border-radius: 24px;
+  border: 3px solid transparent;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(135deg, var(--rosa), var(--dorado));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 8px 20px rgba(91, 26, 74, 0.12);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+#productos > div:nth-child(odd)  { transform: rotate(-1.2deg); }
+#productos > div:nth-child(even) { transform: rotate(1.2deg); }
+#productos > div:hover {
+  transform: rotate(0) translateY(-10px) scale(1.03);
+  box-shadow: 0 18px 35px rgba(232, 62, 140, 0.35);
+}
+
+#productos > div::before {
+  content: "✨ NUEVO";
+  position: absolute;
+  top: 18px;
+  left: -8px;
+  z-index: 2;
+  background: var(--dorado);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 5px 12px;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+#productos img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+  transition: transform 0.4s;
+}
+#productos > div:hover img { transform: scale(1.06); }
+
+#productos h3 { margin: 14px 0 6px; font-size: 1.15rem; }
+#productos p { margin: 0 8px 8px; font-size: 0.85rem; line-height: 1.4; color: #7a5a70; flex: 1; }
+#productos p:last-of-type { flex: 0; margin: 6px auto 12px; }
+#productos p:last-of-type strong {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--rosa), #ff7eb3);
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 6px 18px;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(232, 62, 140, 0.4);
+}
+
+/* ===== BOTONES ===== */
+button {
+  background: var(--rosa);
+  color: #fff;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+button:hover { background: #c92d75; }
+
+#productos button {
+  background: linear-gradient(135deg, var(--ciruela), var(--rosa));
+  width: 85%;
+  margin: 0 auto;
+  padding: 11px;
+}
+#productos button::before { content: "💄 "; }
+#productos button:hover { background: linear-gradient(135deg, var(--dorado), #e6c27a); transform: scale(1.05); }
+
+/* ===== CARRITO ===== */
+div.carrito {
+  display: block;
+  margin: 50px auto;
+  max-width: 440px;
+  padding: 28px 24px 24px;
+  border-radius: 28px;
+  border: 3px solid transparent;
+  background-color: #fff;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(135deg, var(--rosa), var(--dorado));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 14px 34px rgba(91, 26, 74, 0.2);
+}
+div.carrito h2 { margin: 0 0 16px; text-align: center; font-size: 1.6rem; }
+
+#lista-carrito { list-style: none; padding: 0; margin: 0 0 16px; }
+#lista-carrito:empty::before {
+  content: "💋 Tu carrito está vacío. ¡Elige tu look favorito!";
+  display: block;
+  text-align: center;
+  padding: 22px 12px;
+  background: var(--rosa-claro);
+  border: 2px dashed var(--rosa);
+  border-radius: 16px;
+  color: #9a6a86;
+  font-size: 0.9rem;
+}
+#lista-carrito li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: var(--rosa-claro);
+  border-left: 5px solid var(--rosa);
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+#lista-carrito li button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin-left: 4px;
+  border-radius: 50%;
+  background: var(--ciruela);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+#lista-carrito li button:hover { background: var(--dorado); transform: scale(1.15); }
+
+div.carrito p { margin: 16px 0; text-align: center; font-size: 1.1rem; }
+div.carrito p strong {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--ciruela), var(--rosa));
+  color: #fff;
+  padding: 10px 26px;
+  border-radius: 40px;
+  box-shadow: 0 6px 14px rgba(91, 26, 74, 0.3);
+}
+
+div.carrito > button {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  font-size: 1rem;
+  background: linear-gradient(135deg, var(--dorado), #e6c27a);
+  box-shadow: 0 6px 14px rgba(212, 168, 90, 0.4);
+}
+div.carrito > button::before { content: "🗑 "; }
+div.carrito > button:hover { transform: scale(1.03); }
